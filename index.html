@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucky Seven Beauty Spa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary-color: #2e7d32;
+            --secondary-color: #f5f5f5;
+            --accent-color: #d32f2f;
+            --text-color: #333;
+            --light-text: #fff;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: #000;
+            color: var(--light-text);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+        
+        .logo-img {
+            height: 40px;
+            width: auto;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--light-text);
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('8872.jpg_wh860.jpg') no-repeat center center/cover;
+            color: var(--light-text);
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: #1b5e20;
+        }
+        
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background-color: var(--secondary-color);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 36px;
+            color: var(--primary-color);
+        }
+        
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .about-content p {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        
+        /* Girls Section */
+        .girls {
+            padding: 80px 0;
+        }
+        
+        .girls-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .girl-card {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+        
+        .girl-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .girl-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+        
+        .girl-info {
+            padding: 20px;
+        }
+        
+        .girl-name {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .girl-origin {
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .girl-available {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+        
+        /* Days Section */
+        .days {
+            padding: 60px 0;
+            background-color: var(--secondary-color);
+        }
+        
+        .days-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .day-card {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .day-name {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        .position {
+            font-weight: 600;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #000;
+            color: var(--light-text);
+            padding: 40px 0 20px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-section h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .footer-section p, .footer-section a {
+            color: #ccc;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+        }
+        
+        .footer-section a:hover {
+            color: var(--light-text);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            color: #999;
+            font-size: 14px;
+        }
+        
+        /* Call Button */
+        .call-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 1000;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .call-button:hover {
+            transform: scale(1.1);
+        }
+        
+        .call-button i {
+            font-size: 24px;
+        }
+        
+        /* Call Options */
+        .call-options {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            padding: 15px;
+            display: none;
+            z-index: 1000;
+            width: 200px;
+        }
+        
+        .call-options.active {
+            display: block;
+        }
+        
+        .call-option {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .call-option:last-child {
+            border-bottom: none;
+        }
+        
+        .call-option:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .call-option i {
+            margin-right: 10px;
+            color: var(--primary-color);
+        }
+        
+        /* Image Slider */
+        .slider {
+            position: relative;
+            max-width: 100%;
+            margin: 40px auto;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        
+        .slide {
+            min-width: 100%;
+        }
+        
+        .slide img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+        
+        .slider-nav {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            background-color: rgba(255,255,255,0.5);
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+        
+        .slider-dot.active {
+            background-color: white;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background-color: #000;
+                padding: 20px;
+            }
+            
+            nav ul.active {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .hero h2 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .section-title {
+                font-size: 28px;
+            }
+        }
+        
+        /* Gallery Section */
+        .gallery {
+            padding: 80px 0;
+            background-color: var(--secondary-color);
+        }
+        
+        .gallery-slider {
+            position: relative;
+            max-width: 100%;
+            margin: 40px auto;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .gallery-slides {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-slide {
+            min-width: 100%;
+            position: relative;
+        }
+        
+        .gallery-slide img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+        
+        .slide-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 20px;
+        }
+        
+        .slide-caption h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .gallery-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+        
+        .gallery-control {
+            background-color: rgba(0,0,0,0.5);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            margin: 0 20px;
+            transition: background-color 0.3s;
+        }
+        
+        .gallery-control:hover {
+            background-color: rgba(0,0,0,0.8);
+        }
+        
+        .gallery-nav {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .gallery-dot {
+            width: 12px;
+            height: 12px;
+            background-color: rgba(255,255,255,0.5);
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+        
+        .gallery-dot.active {
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="8872.jpg_wh860.jpg" alt="Lucky Seven Logo" class="logo-img">
+                <h1>Lucky Seven Beauty Spa</h1>
+            </div>
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="news.html">News</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h2>Queens Escorts</h2>
+            <p>Open: 24H</p>
+            <p>929-742-1610</p>
+            <a href="tel:9297421610" class="cta-button">Call Now</a>
+        </div>
+    </section>
+
+    <!-- Image Slider -->
+    <div class="container">
+        <div class="slider">
+            <div class="slides">
+                <div class="slide">
+                    <img src="8872.jpg_wh860.jpg" alt="Special Offer 1">
+                </div>
+                <div class="slide">
+                    <img src="8872.jpg_wh860.jpg" alt="Special Offer 2">
+                </div>
+                <div class="slide">
+                    <img src="8872.jpg_wh860.jpg" alt="Special Offer 3">
+                </div>
+            </div>
+            <div class="slider-nav">
+                <div class="slider-dot active" data-slide="0"></div>
+                <div class="slider-dot" data-slide="1"></div>
+                <div class="slider-dot" data-slide="2"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="container">
+            <h2 class="section-title">ABOUT US</h2>
+            <div class="about-content">
+                <p>We have nice ladies who will treat you like a king. Half hour "appetizer" One hour "main course".</p>
+                <p>We like to spend time with educated gentlemen who know how to treat someone as special as we are. You will be teased and pleased to be in our company... The fulfillment of your fantasy is our secret club.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Girls Section -->
+    <section class="girls">
+        <div class="container">
+            <h2 class="section-title">Girls</h2>
+            <div class="girls-grid">
+                <!-- Girl Card 1 -->
+                <div class="girl-card">
+                    <a href="anna.html">
+                        <img src="8872.jpg_wh860.jpg" alt="Anna" class="girl-img">
+                    </a>
+                    <div class="girl-info">
+                        <h3 class="girl-name">Anna</h3>
+                        <p class="girl-origin">Taiwanese girl</p>
+                        <p class="girl-available">Available</p>
+                    </div>
+                </div>
+                
+                <!-- Girl Card 2 -->
+                <div class="girl-card">
+                    <a href="kiki.html">
+                        <img src="8872.jpg_wh860.jpg" alt="Kiki" class="girl-img">
+                    </a>
+                    <div class="girl-info">
+                        <h3 class="girl-name">Kiki</h3>
+                        <p class="girl-origin">Taiwanese girl</p>
+                        <p class="girl-available">Available</p>
+                    </div>
+                </div>
+                
+                <!-- Girl Card 3 -->
+                <div class="girl-card">
+                    <a href="kelly.html">
+                        <img src="8872.jpg_wh860.jpg" alt="Kelly" class="girl-img">
+                    </a>
+                    <div class="girl-info">
+                        <h3 class="girl-name">Kelly</h3>
+                        <p class="girl-origin">Japanese girl</p>
+                        <p class="girl-available">Available</p>
+                    </div>
+                </div>
+                
+                <!-- Girl Card 4 -->
+                <div class="girl-card">
+                    <a href="vy.html">
+                        <img src="8872.jpg_wh860.jpg" alt="Vy" class="girl-img">
+                    </a>
+                    <div class="girl-info">
+                        <h3 class="girl-name">Vy</h3>
+                        <p class="girl-origin">Taiwanese girl</p>
+                        <p class="girl-available">Available</p>
+                    </div>
+                </div>
+                
+                <!-- Girl Card 5 -->
+                <div class="girl-card">
+                    <a href="candy.html">
+                        <img src="8872.jpg_wh860.jpg" alt="Candy" class="girl-img">
+                    </a>
+                    <div class="girl-info">
+                        <h3 class="girl-name">Candy</h3>
+                        <p class="girl-origin">Taiwanese girl</p>
+                        <p class="girl-available">Available</p>
+                    </div>
+                </div>
+                
+                <!-- Girl Card 6 -->
+                <div class="girl-card">
+                    <a href="marr.html">
+                        <img src="8872.jpg_wh860.jpg" alt="Marr" class="girl-img">
+                    </a>
+                    <div class="girl-info">
+                        <h3 class="girl-name">Marr</h3>
+                        <p class="girl-origin">Taiwanese girl</p>
+                        <p class="girl-available">Available</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery">
+        <div class="container">
+            <h2 class="section-title">Gallery</h2>
+            <div class="gallery-slider">
+                <div class="gallery-slides">
+                    <div class="gallery-slide">
+                        <img src="8872.jpg_wh860.jpg" alt="Gallery Image 1">
+                        <div class="slide-caption">
+                            <h3>Premium Experience</h3>
+                            <p>Enjoy our luxurious services in a comfortable and private setting</p>
+                        </div>
+                    </div>
+                    <div class="gallery-slide">
+                        <img src="8872.jpg_wh860.jpg" alt="Gallery Image 2">
+                        <div class="slide-caption">
+                            <h3>Elegant Ambiance</h3>
+                            <p>Relax in our beautifully designed spaces created for your comfort</p>
+                        </div>
+                    </div>
+                    <div class="gallery-slide">
+                        <img src="8872.jpg_wh860.jpg" alt="Gallery Image 3">
+                        <div class="slide-caption">
+                            <h3>Professional Staff</h3>
+                            <p>Our trained professionals are dedicated to your satisfaction</p>
+                        </div>
+                    </div>
+                    <div class="gallery-slide">
+                        <img src="8872.jpg_wh860.jpg" alt="Gallery Image 4">
+                        <div class="slide-caption">
+                            <h3>Special Treatments</h3>
+                            <p>Indulge in our exclusive treatments designed just for you</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-controls">
+                    <div class="gallery-control prev-gallery">
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
+                    <div class="gallery-control next-gallery">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+                
+                <div class="gallery-nav">
+                    <div class="gallery-dot active" data-slide="0"></div>
+                    <div class="gallery-dot" data-slide="1"></div>
+                    <div class="gallery-dot" data-slide="2"></div>
+                    <div class="gallery-dot" data-slide="3"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-phone"></i> 929-742-1610</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 108-04 Jamaica Ave, Jamaica NY 11418</p>
+                    <p><i class="fas fa-clock"></i> Open 7 days a week, 24H</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="index.html">Home</a>
+                    <a href="news.html">News</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+                    <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+                    <a href="#"><i class="fab fa-facebook"></i> Facebook</a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 by luckysevenbeautyspa.com</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Call Button -->
+    <div class="call-button" id="callButton">
+        <i class="fas fa-phone"></i>
+    </div>
+    
+    <!-- Call Options -->
+    <div class="call-options" id="callOptions">
+        <div class="call-option" onclick="window.location.href='tel:9297421610'">
+            <i class="fas fa-phone"></i>
+            <span>Call Now</span>
+        </div>
+        <div class="call-option" onclick="window.location.href='sms:9297421610'">
+            <i class="fas fa-sms"></i>
+            <span>Send SMS</span>
+        </div>
+        <div class="call-option" id="copyNumber">
+            <i class="fas fa-copy"></i>
+            <span>Copy Number</span>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.getElementById('navMenu').classList.toggle('active');
+        });
+
+        // Call Button Toggle
+        document.getElementById('callButton').addEventListener('click', function() {
+            document.getElementById('callOptions').classList.toggle('active');
+        });
+
+        // Copy Phone Number
+        document.getElementById('copyNumber').addEventListener('click', function() {
+            navigator.clipboard.writeText('9297421610').then(function() {
+                alert('Phone number copied to clipboard!');
+            });
+        });
+
+        // Image Slider
+        let currentSlide = 0;
+        const slides = document.querySelector('.slides');
+        const dots = document.querySelectorAll('.slider-dot');
+        const totalSlides = document.querySelectorAll('.slide').length;
+
+        function showSlide(n) {
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[currentSlide].classList.add('active');
+        }
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showSlide(index);
+            });
+        });
+
+        // Auto slide
+        setInterval(() => {
+            showSlide(currentSlide + 1);
+        }, 5000);
+
+        // Gallery Slider
+        let currentGallerySlide = 0;
+        const gallerySlides = document.querySelector('.gallery-slides');
+        const galleryDots = document.querySelectorAll('.gallery-dot');
+        const totalGallerySlides = document.querySelectorAll('.gallery-slide').length;
+        const prevGalleryBtn = document.querySelector('.prev-gallery');
+        const nextGalleryBtn = document.querySelector('.next-gallery');
+
+        function showGallerySlide(n) {
+            currentGallerySlide = (n + totalGallerySlides) % totalGallerySlides;
+            gallerySlides.style.transform = `translateX(-${currentGallerySlide * 100}%)`;
+            
+            galleryDots.forEach(dot => dot.classList.remove('active'));
+            galleryDots[currentGallerySlide].classList.add('active');
+        }
+
+        galleryDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showGallerySlide(index);
+            });
+        });
+
+        prevGalleryBtn.addEventListener('click', () => {
+            showGallerySlide(currentGallerySlide - 1);
+        });
+
+        nextGalleryBtn.addEventListener('click', () => {
+            showGallerySlide(currentGallerySlide + 1);
+        });
+
+        // Auto gallery slide
+        setInterval(() => {
+            showGallerySlide(currentGallerySlide + 1);
+        }, 6000);
+
+        // Close call options when clicking outside
+        document.addEventListener('click', function(event) {
+            const callButton = document.getElementById('callButton');
+            const callOptions = document.getElementById('callOptions');
+            
+            if (!callButton.contains(event.target) && !callOptions.contains(event.target)) {
+                callOptions.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
